@@ -9,11 +9,9 @@ import { toast } from 'react-toastify'
 const Edit = () => {
 
     const [disable, setDisable] = useState(false)
-    const [category, setCategory] = useState([])
+    //const [category, setCategory] = useState([])
     const navigate = useNavigate();
     const params = useParams();
-
-
     const {
             register,
             handleSubmit,
@@ -32,21 +30,19 @@ const Edit = () => {
                 })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result);
+                    //console.log(result);
                     if(result.status == 200){
-                        setCategory(result.data)
+                        //setCategory(result.data)
                         reset({
                             name: result.data.name,
                             status: result.data.status,
                         })
-
                     } else {
                         console.log("Something error !!!!!");
                     }
                 })
             }
         });
-
     const saveCategory = async (data) => {
         setDisable(true);
         const res = await fetch(`${apiUrl}/categories/${params.id}`,{

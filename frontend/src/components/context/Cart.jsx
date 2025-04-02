@@ -17,59 +17,47 @@ export const CartProvider = ({children}) => {
         try {
             let updatedCart = [...cartData];
 
-            if (cartData.length === 0) {
-                updatedCart.push({
-                    id: `${product.id}-${Math.floor(Math.random() * 100000000)}`,
-                    product_id: product.id,
-                    size: size,
-                    title: product.title,
-                    price: product.price,
-                    qty: 1,
-                    image_url: product.image_url,
-                });
-            } else {
-                if (size != null) {
-                    const isProductExist = updatedCart.find(item =>
-                        item.product_id === product.id && item.size === size
+            if (size != null) {
+                const isProductExist = updatedCart.find(item =>
+                    item.product_id === product.id && item.size === size
+                );
+                if (isProductExist) {
+                    updatedCart = updatedCart.map(item => 
+                        (item.product_id === product.id && item.size === size)
+                        ? {...item, qty: item.qty + 1}
+                        : item
                     );
-                    if (isProductExist) {
-                        updatedCart = updatedCart.map(item => 
-                            (item.product_id === product.id && item.size === size)
-                            ? {...item, qty: item.qty + 1}
-                            : item
-                        );
-                    } else {
-                        updatedCart.push({
-                            id: `${product.id}-${Math.floor(Math.random() * 100000000)}`,
-                            product_id: product.id,
-                            size: size,
-                            title: product.title,
-                            price: product.price,
-                            qty: 1,
-                            image_url: product.image_url,
-                        });
-                    }
                 } else {
-                    const isProductExist = updatedCart.find(item =>
-                        item.product_id === product.id
+                    updatedCart.push({
+                        id: `${product.id}-${Math.floor(Math.random() * 100000000)}`,
+                        product_id: product.id,
+                        size: size,
+                        title: product.title,
+                        price: product.price,
+                        qty: 1,
+                        image_url: product.image_url,
+                    });
+                }
+            } else {
+                const isProductExist = updatedCart.find(item =>
+                    item.product_id === product.id && item.size === null
+                );
+                if (isProductExist) {
+                    updatedCart = updatedCart.map(item => 
+                        (item.product_id === product.id && item.size === null)
+                        ? {...item, qty: item.qty + 1}
+                        : item
                     );
-                    if (isProductExist) {
-                        updatedCart = updatedCart.map(item => 
-                            item.product_id === product.id
-                            ? {...item, qty: item.qty + 1}
-                            : item
-                        );
-                    } else {
-                        updatedCart.push({
-                            id: `${product.id}-${Math.floor(Math.random() * 100000000)}`,
-                            product_id: product.id,
-                            size: size,
-                            title: product.title,
-                            price: product.price,
-                            qty: 1,
-                            image_url: product.image_url,
-                        });
-                    }
+                } else {
+                    updatedCart.push({
+                        id: `${product.id}-${Math.floor(Math.random() * 100000000)}`,
+                        product_id: product.id,
+                        size: null,
+                        title: product.title,
+                        price: product.price,
+                        qty: 1,
+                        image_url: product.image_url,
+                    });
                 }
             }
             setCartData(updatedCart);

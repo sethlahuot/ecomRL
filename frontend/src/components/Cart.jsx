@@ -161,7 +161,7 @@ const Cart = () => {
                         </div>
                         <div className='d-flex justify-content-end gap-2'>
                             <Link to="/shop" className='btn btn-primary'>Continue Shopping</Link>
-                            <button className='btn btn-primary'>Proceed To Checkout</button>
+                            <Link to={'/checkout'} className='btn btn-primary'>Proceed To Checkout</Link>
                         </div>
                     </div>
                 </div>

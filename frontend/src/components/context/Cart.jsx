@@ -19,11 +19,11 @@ export const CartProvider = ({children}) => {
 
             if (size != null) {
                 const isProductExist = updatedCart.find(item =>
-                    item.product_id === product.id && item.size === size
+                    item.product_id === product.id && item.size === size.name
                 );
                 if (isProductExist) {
                     updatedCart = updatedCart.map(item => 
-                        (item.product_id === product.id && item.size === size)
+                        (item.product_id === product.id && item.size === size.name)
                         ? {...item, qty: item.qty + 1}
                         : item
                     );
@@ -31,7 +31,7 @@ export const CartProvider = ({children}) => {
                     updatedCart.push({
                         id: `${product.id}-${Math.floor(Math.random() * 100000000)}`,
                         product_id: product.id,
-                        size: size,
+                        size: size.name,
                         title: product.title,
                         price: product.price,
                         qty: 1,

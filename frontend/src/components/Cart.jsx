@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Layout from './common/Layout'
 import { Link } from 'react-router-dom'
 import { CartContext } from './context/Cart'
 import { toast } from 'react-toastify'
+import { apiUrl, userToken } from './common/http'
 
 const Cart = () => {
   const { cartData, setCartData } = useContext(CartContext);
+  const [shippingCost, setShippingCost] = useState(0);
 
   const updateQuantity = (itemId, newQty) => {
     try {
@@ -47,9 +49,38 @@ const Cart = () => {
     }
   };
 
-  const shipping = 5;
+  const calculateShipping = () => {
+    try {
+      return cartData.reduce((total, item) => total + (item.qty * shippingCost), 0);
+    } catch (error) {
+      console.error('Error calculating shipping:', error);
+      return 0;
+    }
+  };
+
+  useEffect(() => {
+    fetch(`${apiUrl}/get-shipping-front`,{
+        method: 'GET',
+        headers: {
+            'Content-type' : 'application/json',
+            'Accept' : 'application/json',
+            'Authorization' : `Bearer ${userToken()}`
+        }
+    })
+    .then(res => res.json())
+    .then(result => {
+        if(result.status == 200){
+          setShippingCost(result.data.shipping_charge)
+        } else {
+            setShippingCost(0)
+            console.log("Something error !!!!!");
+        }
+    })
+  }, []);
+
   const subtotal = calculateSubtotal();
-  const total = subtotal + shipping;
+  const shippingAmount = calculateShipping();
+  const total = subtotal + shippingAmount;
 
   if (!cartData || cartData.length === 0) {
     return (
@@ -153,7 +184,7 @@ const Cart = () => {
                         </div>
                         <div className='d-flex justify-content-between border-bottom pb-2'>
                             <div>Tax</div>
-                            <div>${shipping.toFixed(2)}</div>
+                            <div>${shippingAmount.toFixed(2)}</div>
                         </div>
                         <div className='d-flex justify-content-between border-bottom py-2'>
                             <div><strong>Total</strong></div>

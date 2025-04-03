@@ -44,11 +44,11 @@ class OrderController extends Controller
             'id' => $order->id,
             'message' => 'You have successfully placed your order.'
         ], 200); 
-        }else {
+        } else {
             return response()->json([
             'status' => 400,
             'message' => 'Your cart is empty'
-        ], 400);
+            ], 400);
         }
     }
 }

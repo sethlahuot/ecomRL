@@ -118,14 +118,14 @@ const Confirmation = () => {
                                 <td>${order.shipping}</td>
                             </tr>
                             <tr>
-                                <td className='text-end fw-bold' colSpan={3}>Grand Total</td>
+                                <td className='text-end fw-bold' colSpan={3}>Total</td>
                                 <td>${order.grand_total}</td>
                             </tr>
                                 </tfoot>
                             </table>
                         </div>
                         <div className='text-center'>
-                            <button className='btn btn-primary'>View Order Dettails</button>
+                            <Link to={`/account/orders/details/${order.id}`} className='btn btn-primary'>View Order Details</Link>
                             <Link to={'/shop'} className='btn btn-outline-secondary ms-2'>Continune Shopping</Link>
                         </div>
                     </div>

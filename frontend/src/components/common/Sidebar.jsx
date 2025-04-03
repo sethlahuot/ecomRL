@@ -20,17 +20,15 @@ const Sidebar = () => {
                     <Link to="/admin/products">Product</Link>
                 </li>
                 <li>
-                    <Link to="/admin/categories">Orders</Link>
+                    <Link to="/admin/orders">Orders</Link>
                 </li>
                 <li>
-                    <Link to="/admin/categories">Users</Link>
+                    <Link to="/admin/users">Users</Link>
                 </li>
                 <li>
-                    <Link to="/admin/categories">Shopping</Link>
+                    <Link to="/admin/shipping">Shopping</Link>
                 </li>
-                <li>
-                    <Link to="/admin/categories">Change Password</Link>
-                </li>
+                
                 <li>
                     <a href="" onClick={logout}>Logout</a>
                 </li>

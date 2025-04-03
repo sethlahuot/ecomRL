@@ -11,10 +11,7 @@ const UserSildebar = () => {
                     <Link to="/account">Account</Link>
                 </li>
                 <li>
-                    <Link to="#">Orders</Link>
-                </li>
-                <li>
-                    <Link to="#">Change Password</Link>
+                    <Link to="/account/orders">Orders</Link>
                 </li>
                 <li>
                     <a href="" onClick={logout}>Logout</a>

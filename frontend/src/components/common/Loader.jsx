@@ -2,10 +2,9 @@ import React from 'react'
 
 const Loader = () => {
   return (
-    <div className='text-center py-5'>
-        <div className='spinner-border' role='status'>
-            <span className='visually-hidden'>Loading...</span>
-        </div>
+    // <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
     </div>
   )
 }

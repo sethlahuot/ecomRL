@@ -1,83 +1,90 @@
 import React from 'react'
-import Logo1 from '../../assets/images/logo-white.png'
+import Logo1 from '../../assets/tem/img/logo.png'
+import Payment1 from '../../assets/tem/img/payment/payment-1.png'
+import Payment2 from '../../assets/tem/img/payment/payment-2.png'
+import Payment3 from '../../assets/tem/img/payment/payment-3.png'
+import Payment4 from '../../assets/tem/img/payment/payment-4.png'
+import Payment5 from '../../assets/tem/img/payment/payment-5.png'
+const Footer = () => {
 
-const Fooder = () => {
   return (
-    <footer className='py-5 text-white'>
-        <div className='container'>
-            <div className='row mb-5'>
-              <div className='col-md-3 pb-4'>
-                  <img src={Logo1} alt="" width={150}/>
-                  <div className='pt-3 pe-5'>Lor, sdlkfsalkdfoef jfkdsaldf sjflakddjf lsekl</div>
+    <footer className="footer">
+      <hr />
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-4 col-md-6 col-sm-7">
+            <div className="footer__about">
+              <div className="footer__logo">
+                <a href="/"><img src={Logo1} alt="Logo"/></a>
               </div>
-              <div className='col-md-3 pb-4'>
-                <h2 className='mb-3'>Categories</h2>
-                <ul>
-                  <li>
-                    <a href="">Kids</a>
-                  </li>
-                  <li>
-                    <a href="">Women</a>
-                  </li>
-                  <li>
-                    <a href="">Men</a>
-                  </li>
-                </ul>
-              </div>
-              <div className='col-md-3 pb-4'>
-              <h2 className='mb-3'>Quick Links</h2>
-                <ul>
-                  <li>
-                    <a href="">Login</a>
-                  </li>
-                  <li>
-                    <a href="">Register</a>
-                  </li>
-                </ul>
-              </div>
-              <div className='col-md-3 pb-4'>
-                <h2 className='mb-3'>Get in Touch</h2>
-                  <ul>
-                    <li>
-                      <a href="#">+855 953 622 336</a>
-                    </li>
-                    <li>
-                      <a href="#">houthengsela@gmail.com</a>
-                    </li>
-                    <li>
-                      <a href="">Men</a>
-                    </li>
-                  </ul>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+              cilisis.</p>
+              <div className="footer__payment">
+                <a href="/checkout"><img src={Payment1} alt="Payment 1"/></a>
+                <a href="/checkout"><img src={Payment2} alt="Payment 2"/></a>
+                <a href="/checkout"><img src={Payment3} alt="Payment 3"/></a>
+                <a href="/checkout"><img src={Payment4} alt="Payment 4"/></a>
+                <a href="/checkout"><img src={Payment5} alt="Payment 5"/></a>
               </div>
             </div>
-            <div className='row spotlight py-5'>
-              <div className='col-md-4'>
-                <div className='d-flex justify-content-center py-3'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-truck" viewBox="0 0 16 16"><path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5zm1.294 7.456A2 2 0 0 1 4.732 11h5.536a2 2 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456M12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2"></path></svg>  
-                  <h3 className='ps-2'>Free Delivery</h3>
-                </div>
-              </div>
-              <div className='col-md-4'>
-                <div className='d-flex justify-content-center py-3'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-cash" viewBox="0 0 16 16"><path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4"></path><path d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2z"></path></svg>
-                  <h3 className='ps-2'>Money Back Guarntee</h3>
-                </div>
-              </div>
-              <div className='col-md-4'>
-                <div className='d-flex justify-content-center py-3'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-credit-card-2-back" viewBox="0 0 16 16"><path d="M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5z"></path><path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm13 2v5H1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1m-1 9H2a1 1 0 0 1-1-1v-1h14v1a1 1 0 0 1-1 1"></path></svg>
-                  <h3 className='ps-2'>Secure Paymen</h3>
-                </div>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-5">
+            <div className="footer__widget">
+              <h6>Quick links</h6>
+              <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/contact">Contact US</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-lg-2 col-md-3 col-sm-4">
+            <div className="footer__widget">
+              <h6>Account</h6>
+              <ul>
+                <li><a href="/account">My Account</a></li>
+                <li><a href="/account/orders">Orders Tracking</a></li>
+                <li><a href="/checkout">Checkout</a></li>
+                
+              </ul>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-8 col-sm-8">
+            <div className="footer__newslatter">
+              <h6>NEWSLETTER</h6>
+              <form action="#">
+                <input type="text" placeholder="Email" />
+                <button type="submit" className="site-btn">Subscribe</button>
+              </form>
+              <div className="footer__social">
+                <a href="#"><i className="fa fa-facebook"></i></a>
+                <a href="#"><i className="fa fa-twitter"></i></a>
+                <a href="#"><i className="fa fa-youtube-play"></i></a>
+                <a href="#"><i className="fa fa-instagram"></i></a>
+                <a href="#"><i className="fa fa-pinterest"></i></a>
               </div>
             </div>
-            <div className='row'>
-              <div className='col-md-12 text-center pt-5'>
-                <p>&copy; 2025 All Right Reserved</p>
-              </div>
-            </div>
+          </div>
         </div>
-      </footer>
+        <div className="row">
+          <div className="col-lg-12">
+            <div className="footer__copyright__text">
+              <p>Copyright &copy; {new Date().getFullYear()} All rights reserved | This template is made with <i className="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank" rel="noopener noreferrer">Hout Hengsela</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="search-model">
+        <div className="h-100 d-flex align-items-center justify-content-center">
+          <div className="search-close-switch">+</div>
+          <form className="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here....." />
+          </form>
+        </div>
+      </div>
+    </footer>
   )
 }
 
-export default Fooder
+export default Footer

@@ -51,7 +51,7 @@ const Cart = () => {
 
   const calculateShipping = () => {
     try {
-      return cartData.reduce((total, item) => total + (item.qty * shippingCost), 0);
+      return cartData.length > 0 ? shippingCost : 0;
     } catch (error) {
       console.error('Error calculating shipping:', error);
       return 0;
@@ -108,96 +108,87 @@ const Cart = () => {
 
   return (
     <Layout>
-        <div className='container pb-5'>
-            <div className='row'>
-                <div className='col-md-12'>
-                    <nav aria-label="breadcrumb" className='py-4'>
-                        <ol className='breadcrumb'>
-                            <li className='breadcrumb-item'><Link to="/">Home</Link></li>
-                            <li className='breadcrumb-item active' aria-current="page">Cart</li>
-                        </ol>
-                    </nav>
-                </div>
-                <div className='col-md-12'>
-                    <h2 className='border-bottom py-3'>Cart</h2>
-                   
-                    <table className='table'> 
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Details</th>
-                                <th>Quantity</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cartData.map((item) => (
-                                <tr key={item.id}>
-                                    <td width={100}>
-                                        <img 
-                                            src={item.image_url} 
-                                            width={80} 
-                                            alt={item.title}
-                                            onError={(e) => {
-                                                e.target.onerror = null;
-                                                e.target.src = '/placeholder-image.jpg';
-                                            }}
-                                        />
-                                    </td>
-                                    <td width={600}>
-                                        <div>{item.title}</div>
-                                        <div className='d-flex align-items-center pt-3'>
-                                            <span>${item.price.toFixed(2)}</span>
-                                        </div>
-                                    </td>
-                                    <td valign='middle'>
-                                        <input 
-                                            style={{ width:'100px'}} 
-                                            type="number" 
-                                            value={item.qty} 
-                                            min="1"
-                                            onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
-                                            className='form-control' 
-                                        />
-                                    </td>
-                                    <td valign='middle'>
-                                        <button 
-                                            onClick={() => removeFromCart(item.id)}
-                                            className="btn btn-danger "
-                                            aria-label="Remove item"
-                                        >
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className='bi bi-trash3' viewBox="0 0 16 16">
-                                                <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-                                            </svg>
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-                <div className='row justify-content-end'>
-                    <div className='col-md-3'>
-                        <div className='d-flex justify-content-between border-bottom pb-2'>
-                            <div>Subtotal</div>
-                            <div>${subtotal.toFixed(2)}</div>
-                        </div>
-                        <div className='d-flex justify-content-between border-bottom pb-2'>
-                            <div>Tax</div>
-                            <div>${shippingAmount.toFixed(2)}</div>
-                        </div>
-                        <div className='d-flex justify-content-between border-bottom py-2'>
-                            <div><strong>Total</strong></div>
-                            <div>${total.toFixed(2)}</div>
-                        </div>
-                        <div className='d-flex justify-content-end gap-2'>
-                            <Link to="/shop" className='btn btn-primary'>Continue Shopping</Link>
-                            <Link to={'/checkout'} className='btn btn-primary'>Proceed To Checkout</Link>
-                        </div>
-                    </div>
-                </div>
+      <section className="shop-cart spad">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="shop__cart__table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Total</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartData.map((item) => (
+                      <tr key={item.id}>
+                        <td className="cart__product__item">
+                          <img 
+                            src={item.image_url} 
+                            width={80}
+                            alt={item.title}
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = '/placeholder-image.jpg';
+                            }}
+                          />
+                          <div className="cart__product__item__title">
+                            <h6>{item.title}</h6>
+                          </div>
+                        </td>
+                        <td className="cart__price">${item.price.toFixed(2)}</td>
+                        <td className="cart__quantity">
+                          <div className="pro-qty">
+                            <input 
+                              type="number" 
+                              value={item.qty} 
+                              min="1"
+                              onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                            />
+                          </div>
+                        </td>
+                        <td className="cart__total">${(item.price * item.qty).toFixed(2)}</td>
+                        <td className="cart__close">
+                          <span 
+                            className="icon_close"
+                            onClick={() => removeFromCart(item.id)}
+                            style={{ cursor: 'pointer' }}
+                          ></span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-6 col-md-6 col-sm-6">
+              <div className="cart__btn">
+                <Link to="/shop">Continue Shopping</Link>
+              </div>
+            </div>
+            
+          </div>
+          <div className="row">
+            <div className="col-lg-4 offset-lg-8">
+              <div className="cart__total__procced">
+                <h6>Cart total</h6>
+                <ul>
+                  <li>Subtotal <span>${subtotal.toFixed(2)}</span></li>
+                  <li>Tax <span>${shippingAmount.toFixed(2)}</span></li>
+                  <li>Total <span>${total.toFixed(2)}</span></li>
+                </ul>
+                <Link to="/checkout" className="primary-btn">Proceed to checkout</Link>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
     </Layout>
   );
 };

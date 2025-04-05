@@ -36,6 +36,7 @@ import ChangePassword from './components/admin/ChangePassword'
 import UserChangePassword from './components/account/ChangePassword'
 import EditProfile from './components/account/EditProfile'
 import Users from './pages/admin/Users'
+import Contact from './components/Contact'
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='/shop' element={<Shop/>} />
           <Route path='/product/:id' element={<Product/>} />
+          <Route path='/contact' element={<Contact/>} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/account/register' element={<Register />} />
           <Route path='/account/login' element={<UserLogin />} />
